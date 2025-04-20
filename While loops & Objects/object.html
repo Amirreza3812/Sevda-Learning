@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>While Loops & Objects</title>
+    <style>
+      h2 {
+        direction: rtl;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>こんにちは　せゔだちゃん</h1>
+    <h2>
+      خب برات یه آرایه گذاشتم که داخلش چند تا آبجکت هست، با کمک while این آرایه
+      رو پیمایش کن و بگو چه کسایی امتیازشون بالای 80 هستش و لاگ کن اسم و
+      امتیازشون رو
+    </h2>
+
+    <script>
+      const students = [
+        { name: "Alice", score: 75 },
+        { name: "Bob", score: 85 },
+        { name: "Charlie", score: 90 },
+        { name: "David", score: 60 },
+      ];
+
+      // خودت سعی کن بنویسی و این کد رو نخون حتی اگه لازم بود سرچ کن ولی اگه نشد بیا این کد رو بخون و استفاده کن
+
+      let index = 0;
+
+      while (index < students.length) {
+        const student = students[index];
+        if (student.score > 80) {
+          console.log(student.name, student.score);
+        }
+        index++;
+      }
+    </script>
+  </body>
+</html>

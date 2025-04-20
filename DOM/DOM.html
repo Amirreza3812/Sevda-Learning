@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+  </head>
+  <body>
+    <h1>こんにちは　せゔだちゃん</h1>
+    <button id="changeTextBtn">Click Me</button>
+    <p id="text">Original Text</p>
+    <p>این تمرین رو داخل کلاس باهم میریم جلو چون یکم گیج کنندست</p>
+
+    <script>
+      const button = document.getElementById("changeTextBtn");
+      const paragraph = document.getElementById("text");
+
+      button.onclick = function () {
+        paragraph.innerText = "Text has been changed!";
+      };
+    </script>
+  </body>
+</html>

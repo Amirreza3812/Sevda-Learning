@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM + localStorage</title>
+    <style>
+      p {
+        direction: rtl;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>こんにちは　せゔだちゃん</h1>
+    <input id="taskInput" type="text" placeholder="Add a task" />
+    <button id="addTaskBtn" onclick="addTask()">Add Task</button>
+    <ul id="taskList"></ul>
+    <p>
+      توی تمرین قبلی که کارهایی که داخل آرایه داشتیم رو خوندیم و لاگ کردیم حالا
+      باید بفرستیمش به localStorage بعدش هم با استفاده از DOM چاپشون کنیم
+    </p>
+
+    <script>
+      let tasks = JSON.parse(localStorage.getItem("tasks"));
+
+      if (!tasks) {
+        tasks = [
+          { title: "do Code", done: false },
+          { title: " do someThing", done: true },
+        ];
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+      }
+
+      const data = tasks;
+      const list = document.getElementById("taskList");
+
+      const loadTasks = () => {
+        if (data) {
+          const savedTasks = data;
+          let i = 0;
+          while (i < savedTasks.length) {
+            list.innerHTML = savedTasks.map((task) => {
+              return `<li>${task.title}</li>`;
+            });
+            i++;
+          }
+        }
+      };
+
+      const addTask = () => {
+        const newData = data;
+        const task = document.getElementById("taskInput").value;
+        if (task) {
+          const newTask = { title: task, done: false };
+          newData.push(newTask);
+          list.innerHTML = newData.map((task) => {
+            return `<li>${task.title}</li>`;
+          });
+          localStorage.setItem("tasks", JSON.stringify(newData));
+          console.log(newData);
+          document.getElementById("taskInput").value = "";
+        }
+      };
+
+      loadTasks();
+
+      // localStorage.clear();
+    </script>
+  </body>
+</html>

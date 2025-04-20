@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>While + JSON + localStorage</title>
+    <style>
+      h2 {
+        direction: rtl;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>こんにちは　せゔだちゃん</h1>
+    <h2>
+      خب برات یه لیست از کارها و این که تموم شدن یا نه درست کردم اینو داخل
+      localStorage سیو کن و بعدش دوباره از داخل localStorage صداش کن و بزارش توی
+      یه متغیر بعدش با وایل داخلش رو پیمایش کن و از تایتل و این که تموم شده یا
+      نه رو لاگ بگیر
+      <br />
+      (البته دقت کن که از JSON استفاده کنی چون داخل localStorage بخوای بفرستی
+      حتما باید JSON باشه و وقتی هم دریافتش میکنی JSON هستش پس دوباره باید
+      تبدیلش کنی)
+    </h2>
+
+    <script>
+      const tasks = [
+        { title: "Do homework", done: false },
+        { title: "Read a book", done: true },
+        { title: "Buy groceries", done: false },
+      ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      // این کدارو نخون بازم مثل دفعه قبل اگه مجبور شدی بخون
+
+      // مرحله اول : سیو کردن اطلاعات
+      // localStorage.setItem("myTasks", JSON.stringify(tasks));
+
+      // مرحله دوم : خوندن اطلاعات و سیو کردنشون داخل یه متغیر
+      // const data = localStorage.getItem("myTasks");
+      // const taskList = JSON.parse(data);
+
+      // مرحله سوم : لوپ کردن و چاپ مقدار ها
+      // let i = 0;
+      // while (i < taskList.length) {
+      //   console.log(taskList[i].title, taskList[i].done);
+      //   i++;
+      // }
+    </script>
+  </body>
+</html>

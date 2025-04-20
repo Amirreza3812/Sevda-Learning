@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fainal Project</title>
+  </head>
+  <body>
+    <h2>User Manager</h2>
+
+    <button id="loadUsersBtn">Load API Users</button>
+
+    <ul id="userList"></ul>
+
+    <h3>Add a New User</h3>
+    <input type="text" id="nameInput" placeholder="Enter name" />
+    <input type="email" id="emailInput" placeholder="Enter email" />
+    <button id="addUserBtn">Add User</button>
+    <script>
+      const loadBtn = document.getElementById("loadUsersBtn");
+      const addBtn = document.getElementById("addUserBtn");
+      const nameInput = document.getElementById("nameInput");
+      const emailInput = document.getElementById("emailInput");
+      const userList = document.getElementById("userList");
+
+      const savedUsers = [];
+
+      // Load API Users
+      loadBtn.onclick = function () {
+        fetch("https://jsonplaceholder.typicode.com/users")
+          .then((response) => response.json())
+          .then((users) => {
+            displayUsers(users);
+          })
+          .catch((error) => console.error("Error fetching API users:", error));
+      };
+
+      // Add New User
+      addBtn.onclick = function () {
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+
+        if (name && email) {
+          const newUser = { name, email };
+          savedUsers.push(newUser);
+
+          // Save to localStorage
+          localStorage.setItem("savedUsers", JSON.stringify(savedUsers));
+
+          addUserToDOM(newUser);
+
+          // Clear input
+          nameInput.value = "";
+          emailInput.value = "";
+        }
+      };
+
+      // Display any user in DOM
+      function addUserToDOM(user) {
+        const li = document.createElement("li");
+        li.textContent = `${user.name} (${user.email})`;
+        userList.appendChild(li);
+      }
+
+      // Display array of users
+      function displayUsers(users) {
+        let i = 0;
+        while (i < users.length) {
+          addUserToDOM(users[i]);
+          i++;
+        }
+      }
+
+      // Load from localStorage on page load
+      window.onload = function () {
+        const data = localStorage.getItem("savedUsers");
+        if (data) {
+          const usersFromStorage = JSON.parse(data);
+          let i = 0;
+          while (i < usersFromStorage.length) {
+            savedUsers.push(usersFromStorage[i]);
+            addUserToDOM(usersFromStorage[i]);
+            i++;
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
